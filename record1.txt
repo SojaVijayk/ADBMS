@@ -1,0 +1,47 @@
+1.Create a table EMPLOYEE have the following fields (emp_id, name,city,dob,adhar_no)
+mysql> create table EMPLOYEE(emp_id varchar(10),name varchar(20),city varchar(20),dob date,adhar_no int);
+
+2.Create a table STUDENT have the fields(roll_no, name, age, address, gender)and add following constraints on it.
+  Roll_no – Primary key
+  Name – does not allow null values
+  Age- must be in between (0-99), does not allow null values
+  Gender- default value is ‘m’
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| roll_no | int         | NO   | PRI | NULL    |       |
+| name    | varchar(10) | NO   |     | NULL    |       |
+| age     | int         | NO   |     | NULL    |       |
+| adress  | varchar(20) | YES  |     | NULL    |       |
+| gender  | varchar(10) | YES  |     | m       |       |
++---------+-------------+------+-----+---------+-------+
+
+3.Create a temporary table STUDENT1 of STUDENT relation.
+mysql> create temporary table STUDENT as select * from EMPLOYEE;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| emp_id   | varchar(10) | YES  |     | NULL    | NULL  |
+| name     | varchar(20) | YES  |     | NULL    | NULL  |
+| city     | varchar(20) | YES  |     | NULL    | NULL  |
+| dob      | date        | YES  |     | NULL    | NULL  |
+| adhar_no | int         | YES  |     | NULL    | NULL  |
++----------+-------------+------+-----+---------+-------+
+
+4.Create a duplicate table of EMPLOYEE.
+mysql> create table EMPLOYEE_DUPLICATE as select * from EMPLOYEE;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| emp_id   | varchar(10) | YES  |     | NULL    |       |
+| name     | varchar(20) | YES  |     | NULL    |       |
+| city     | varchar(20) | YES  |     | NULL    |       |
+| dob      | date        | YES  |     | NULL    |       |
+| adhar_no | int         | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+
+
+
+
+
+
