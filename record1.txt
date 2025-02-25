@@ -39,7 +39,7 @@ mysql> create table EMPLOYEE_DUPLICATE as select * from EMPLOYEE;
 | dob      | date        | YES  |     | NULL    |       |
 | adhar_no | int         | YES  |     | NULL    |       |
 +----------+-------------+------+-----+---------+-------+
-
+//VERIFIED
 
 
 
