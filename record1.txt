@@ -17,16 +17,17 @@ mysql> create table EMPLOYEE(emp_id varchar(10),name varchar(20),city varchar(20
 +---------+-------------+------+-----+---------+-------+
 
 3.Create a temporary table STUDENT1 of STUDENT relation.
-mysql> create temporary table STUDENT as select * from EMPLOYEE;
-+----------+-------------+------+-----+---------+-------+
-| Field    | Type        | Null | Key | Default | Extra |
-+----------+-------------+------+-----+---------+-------+
-| emp_id   | varchar(10) | YES  |     | NULL    | NULL  |
-| name     | varchar(20) | YES  |     | NULL    | NULL  |
-| city     | varchar(20) | YES  |     | NULL    | NULL  |
-| dob      | date        | YES  |     | NULL    | NULL  |
-| adhar_no | int         | YES  |     | NULL    | NULL  |
-+----------+-------------+------+-----+---------+-------+
+mysql> create temporary table STUDENT as select * from STUDENT;
+mysql>desc STUDENT;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| roll_no | int         | NO   |     | NULL    | NULL  |
+| name    | varchar(25) | NO   |     | NULL    | NULL  |
+| age     | int         | NO   |     | NULL    | NULL  |
+| address | varchar(25) | YES  |     | NULL    | NULL  |
+| gender  | varchar(10) | YES  |     | m       | NULL  |
++---------+-------------+------+-----+---------+-------+
 
 4.Create a duplicate table of EMPLOYEE.
 mysql> create table EMPLOYEE_DUPLICATE as select * from EMPLOYEE;
@@ -39,7 +40,7 @@ mysql> create table EMPLOYEE_DUPLICATE as select * from EMPLOYEE;
 | dob      | date        | YES  |     | NULL    |       |
 | adhar_no | int         | YES  |     | NULL    |       |
 +----------+-------------+------+-----+---------+-------+
-//VERIFIED
+
 
 
 
