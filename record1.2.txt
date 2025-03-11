@@ -160,7 +160,7 @@ ERROR 1146 (42S02): Table 'soja.STUDENT' doesn't exist
 
    
    
-
+//VERIFIED
 
 
 
