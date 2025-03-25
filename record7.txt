@@ -13,7 +13,7 @@ mysql> select p.pname as product_name,ii.quantity as product_quantity from produ
 +--------------+------------------+
 6 rows in set (0.00 sec)
 
-2.Display invoice details of the transaction dated ’31-01-2022’. 
+2.Display invoice details of the transaction dated '2024-12-05'. 
 mysql> select * from invoice_master im join invoice_item ii on im.inv_id=ii.inv_id where im.inv_date='2024-12-05';
 +--------+---------+------------+--------+------+----------+
 | inv_id | cust_id | inv_date   | inv_id | prid | quantity |
