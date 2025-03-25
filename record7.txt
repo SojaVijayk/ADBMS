@@ -1,0 +1,51 @@
+OPTIMIZING DATABASE: (JOINS)
+1.List the product name and quantity of invoice items. 
+mysql> select p.pname as product_name,ii.quantity as product_quantity from product p join invoice_item ii on p.pid=ii.prid;
++--------------+------------------+
+| product_name | product_quantity |
++--------------+------------------+
+| scale        |                6 |
+| eraser       |                5 |
+| pen          |                2 |
+| pencil       |                3 |
+| eraser       |                3 |
+| pen          |                4 |
++--------------+------------------+
+6 rows in set (0.00 sec)
+
+2.Display invoice details of the transaction dated ’31-01-2022’. 
+mysql> select * from invoice_master im join invoice_item ii on im.inv_id=ii.inv_id where im.inv_date='2024-12-05';
++--------+---------+------------+--------+------+----------+
+| inv_id | cust_id | inv_date   | inv_id | prid | quantity |
++--------+---------+------------+--------+------+----------+
+|      5 | 10005   | 2024-12-05 |      5 | 102  |        5 |
++--------+---------+------------+--------+------+----------+
+1 row in set (0.00 sec)
+
+3.    Display the customer name, product name, invoice date of purchased item ‘pen’.
+mysql> select c.name,p.pname,im.inv_date from customer c join invoice_master im on c.id=im.cust_id join invoice_item ii on im.inv_id=ii.inv_id join product p on ii.prid=p.pid where p.pname="pen";
++--------+-------+------------+
+| name   | pname | inv_date   |
++--------+-------+------------+
+| sreya  | pen   | 2024-03-23 |
+| anjana | pen   | 2024-04-16 |
++--------+-------+------------+
+2 rows in set (0.00 sec)
+
+
+4.    Display all customer details and invoice details must include customer has not purchased items.
+mysql> select c.*,im.inv_id,im.inv_date from customer  c left join invoice_master im on c.id=im.cust_id;
++-------+--------+------------+-----------+------------+--------+------------+
+| id    | name   | address    | city      | ph_no      | inv_id | inv_date   |
++-------+--------+------------+-----------+------------+--------+------------+
+| 10001 | sreya  | puthiyappa | kollam    | 2347614985 |      1 | 2024-03-23 |
+| 10002 | hudha  | palazhi    | kollam    | NULL       |   NULL | NULL       |
+| 10003 | anjana | kotooli    | ernakulam | 7642820677 |      3 | 2024-04-16 |
+| 10004 | sruthi | vegeri     | tvm       | 9347854195 |      4 | 2024-10-04 |
+| 10005 | sona   | koyilandi  | palakad   | 7907257386 |      5 | 2024-12-05 |
+| 10006 | sonima | paramabath | wayanad   | 8157399633 |   NULL | NULL       |
+| 10007 | sruthi | koduvally  | kollam    | 8928546286 |   NULL | NULL       |
+| 10008 | swathi | kappad     | kollam    | 8979246286 |   NULL | NULL       |
++-------+--------+------------+-----------+------------+--------+------------+
+8 rows in set (0.00 sec)
+
