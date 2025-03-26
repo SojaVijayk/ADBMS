@@ -49,3 +49,4 @@ mysql> select c.*,im.inv_id,im.inv_date from customer  c left join invoice_maste
 +-------+--------+------------+-----------+------------+--------+------------+
 8 rows in set (0.00 sec)
 
+//VERIFIED
