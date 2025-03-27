@@ -47,4 +47,4 @@ mysql> select pname from product where pid in(select prid from invoice_item wher
 +--------+
 2 rows in set (0.00 sec)
 
-
+//VERIFIED
