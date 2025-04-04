@@ -106,5 +106,5 @@ mysql> call invoice_details('sreya')//
 
 Query OK, 0 rows affected (0.01 sec)
 
-
+//VERIFIED
 
