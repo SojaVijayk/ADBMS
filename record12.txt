@@ -1,0 +1,104 @@
+ NoSQL CRUD
+
+1.Write a MongoDB query to create an INVOICE database and collections (CUSTOMER, PRODUCT) and its corresponding documents.
+
+test> use INVOICE;
+switched to db INVOICE
+
+INVOICE> db.CUSTOMER.insert({cid:'1001',cname:"Soja",city:"Clt",phno:"9635739791"})
+DeprecationWarning: Collection.insert() is deprecated. Use insertOne, insertMany, or bulkWrite.
+{
+  acknowledged: true,
+  insertedIds: { '0': ObjectId('67fe31024fa44765be544ca7') }
+}
+INVOICE> db.CUSTOMER.insert({cid:'1002',cname:"Anjana",city:"kannur",phno:"9457924678"})
+{
+  acknowledged: true,
+  insertedIds: { '0': ObjectId('67fe314a4fa44765be544ca8') }
+}
+INVOICE> db.CUSTOMER.insert({cid:'1003',cname:"Sreya",city:"TVM",phno:"7825426897"})
+{
+  acknowledged: true,
+  insertedIds: { '0': ObjectId('67fe31734fa44765be544ca9') }
+}
+INVOICE> db.CUSTOMER.insert({cid:'1004',cname:"Nada",city:"EKM",phno:"7934680127"})
+{
+  acknowledged: true,
+  insertedIds: { '0': ObjectId('67fe31a74fa44765be544caa') }
+}
+
+
+INVOICE> db.PRODUCT.insert({pid:101,pname:"Soap",price:60})
+{
+  acknowledged: true,
+  insertedIds: { '0': ObjectId('67fe31ed4fa44765be544cab') }
+}
+INVOICE> db.PRODUCT.insert({pid:102,pname:"pencil",price:70})
+{
+  acknowledged: true,
+  insertedIds: { '0': ObjectId('67fe321f4fa44765be544cac') }
+}
+INVOICE> db.PRODUCT.insert({pid:103,pname:"scale",price:40})
+{
+  acknowledged: true,
+  insertedIds: { '0': ObjectId('67fe32434fa44765be544cad') }
+}
+INVOICE> db.PRODUCT.insert({pid:104,pname:"pen",price:90})
+{
+  acknowledged: true,
+  insertedIds: { '0': ObjectId('67fe325a4fa44765be544cae') }
+}
+
+
+2.Write a MongoDB query to find all documents from the collection CUSTOMER 
+
+INVOICE>  db.CUSTOMER.find()
+[
+  {
+    _id: ObjectId('67fe31024fa44765be544ca7'),
+    cid: '1001',
+    cname: 'Soja',
+    city: 'Clt',
+    phno: '9635739791'
+  },
+  {
+    _id: ObjectId('67fe314a4fa44765be544ca8'),
+    cid: '1002',
+    cname: 'Anjana',
+    city: 'kannur',
+    phno: '9457924678'
+  },
+  {
+    _id: ObjectId('67fe31734fa44765be544ca9'),
+    cid: '1003',
+    cname: 'Sreya',
+    city: 'TVM',
+    phno: '7825426897'
+  },
+  {
+    _id: ObjectId('67fe31a74fa44765be544caa'),
+    cid: '1004',
+    cname: 'Nada',
+    city: 'EKM',
+    phno: '7934680127'
+  }
+]
+
+
+3.Write a MongoDB query to update the city in the collection CUSTOMER.
+INVOICE> db.CUSTOMER.update({cid:'1001'},{$set:{city:'Banglore'}})
+DeprecationWarning: Collection.update() is deprecated. Use updateOne, updateMany, or bulkWrite.
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+
+
+4.Write a MongoDB query to delete the first matched document whose city is “Calicut”.
+
+INVOICE> db.CUSTOMER.deleteOne({ city: "TVM" })
+{ acknowledged: true, deletedCount: 1 }
+
