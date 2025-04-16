@@ -1,0 +1,75 @@
+NoSQL- RETRIEVING DATA
+
+1.Write a MongoDB query to display the customer documents having city ‘ekm’,’tvm’. 
+
+INVOICE> db.CUSTOMER.find({ city: { $in: ['EKM', 'TVM'] } }).pretty()
+[
+  {
+    _id: ObjectId('67fe31a74fa44765be544caa'),
+    cid: '1004',
+    cname: 'Nada',
+    city: 'EKM',
+    phno: '7934680127'
+  },
+  {
+    _id: ObjectId('67ff7713e04a9e24f9544ca7'),
+    cid: '1005',
+    cname: 'sona',
+    city: 'TVM',
+    phno: '9778523451'
+  }
+]
+
+
+2.Write a MongoDB query to display all product documents their price >50.
+
+INVOICE> db.PRODUCT.find({ price: { $gt: 50 } })
+[
+  {
+    _id: ObjectId('67fe31ed4fa44765be544cab'),
+    pid: 101,
+    pname: 'Soap',
+    price: 60
+  },
+  {
+    _id: ObjectId('67fe321f4fa44765be544cac'),
+    pid: 102,
+    pname: 'pencil',
+    price: 70
+  },
+  {
+    _id: ObjectId('67fe325a4fa44765be544cae'),
+    pid: 104,
+    pname: 'pen',
+    price: 90
+  }
+]
+
+
+3.Write a MongoDB query to find customer documents who not live in ‘tvm’.
+
+INVOICE> db.CUSTOMER.find({ city: { $ne: 'TVM' } })
+[
+  {
+    _id: ObjectId('67fe31024fa44765be544ca7'),
+    cid: '1001',
+    cname: 'Soja',
+    city: 'Banglore',
+    phno: '9635739791'
+  },
+  {
+    _id: ObjectId('67fe314a4fa44765be544ca8'),
+    cid: '1002',
+    cname: 'Anjana',
+    city: 'kannur',
+    phno: '9457924678'
+  },
+  {
+    _id: ObjectId('67fe31a74fa44765be544caa'),
+    cid: '1004',
+    cname: 'Nada',
+    city: 'EKM',
+    phno: '7934680127'
+  }
+]
+
