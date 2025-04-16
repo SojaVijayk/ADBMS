@@ -97,10 +97,8 @@ DeprecationWarning: Collection.update() is deprecated. Use updateOne, updateMany
 }
 
 
-4.Write a MongoDB query to delete the first matched document whose city is “Calicut”.
+4.Write a MongoDB query to delete the first matched document whose city is “TVM”.
 
 INVOICE> db.CUSTOMER.deleteOne({ city: "TVM" })
 { acknowledged: true, deletedCount: 1 }
 
-//RESUBMIT
-last one city=TVM??
