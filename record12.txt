@@ -102,3 +102,4 @@ DeprecationWarning: Collection.update() is deprecated. Use updateOne, updateMany
 INVOICE> db.CUSTOMER.deleteOne({ city: "TVM" })
 { acknowledged: true, deletedCount: 1 }
 
+//VERIFIED
