@@ -1,0 +1,83 @@
+NoSQL - AGGREGATE FUNCTIONS AND REGULAR EXPRESSIONS
+
+1.Write a MongoDB query to sort customer details in ascending order of their name.
+
+INVOICE> db.CUSTOMER.find().sort({ cname: 1 })
+[
+  {
+    _id: ObjectId('67fe314a4fa44765be544ca8'),
+    cid: '1002',
+    cname: 'Anjana',
+    city: 'kannur',
+    phno: '9457924678'
+  },
+  {
+    _id: ObjectId('67fe31a74fa44765be544caa'),
+    cid: '1004',
+    cname: 'Nada',
+    city: 'EKM',
+    phno: '7934680127'
+  },
+  {
+    _id: ObjectId('67fe31024fa44765be544ca7'),
+    cid: '1001',
+    cname: 'Soja',
+    city: 'Banglore',
+    phno: '9635739791'
+  },
+  {
+    _id: ObjectId('67ff7713e04a9e24f9544ca7'),
+    cid: '1005',
+    cname: 'sona',
+    city: 'TVM',
+    phno: '9778523451'
+  }
+]
+
+2.Write a MongoDB query to count number of customers in each city.
+
+INVOICE> db.CUSTOMER.aggregate([{$group:{_id:"$city",CUSTOMERCount:{$sum:1}}}])
+[
+  { _id: 'EKM', CUSTOMERCount: 1 },
+  { _id: 'kannur', CUSTOMERCount: 1 },
+  { _id: 'TVM', CUSTOMERCount: 1 },
+  { _id: 'Banglore', CUSTOMERCount: 1 }
+]
+
+
+3.Write a MongoDB query to find minimum and maximum age in each city.
+INVOICE> db.CUSTOMER.aggregate([ { $group: { _id: "$city", minAge: { $min: "$age" }, maxAge: { $max: "$age" } } }] )
+[
+  { _id: 'Banglore', minAge: 21, maxAge: 21 },
+  { _id: 'TVM', minAge: 25, maxAge: 28 },
+  { _id: 'Kannur', minAge: null, maxAge: null },
+  { _id: 'EKM', minAge: 32, maxAge: 34 },
+  { _id: 'kozhikode', minAge: null, maxAge: null },
+  { _id: 'kannur', minAge: 26, maxAge: 26 }
+]
+
+
+4.write a mongoDB query using $match stage to retrieve all customer documents whose customer_name starts with the letter "S".
+
+INVOICE> db.CUSTOMER.aggregate([{ $match: { cname: { $regex: "^S" } } }] )
+[
+  {
+    _id: ObjectId('67fe31024fa44765be544ca7'),
+    cid: '1001',
+    cname: 'Soja',
+    city: 'Banglore',
+    phno: '9635739791',
+    age: 21
+  }
+]
+5.Write a query using $lookup to join CUSTOMER and PRODUCT collections and display only customer name, product name, and price.
+
+INVOICE> db.CUSTOMER.aggregate([ { $lookup: { from: "PRODUCT", localField: "pid", foreignField: "pid", as: "productDetails" } }, { $unwind: "$productDetails" }, { $project: { _id: 0, cname: 1, pname: "$productDetails.pname", price: "$productDetails.price" } }] )
+[
+  { cname: 'Soja', pname: 'Soap', price: 60 },
+  { cname: 'Anjana', pname: 'pencil', price: 70 },
+  { cname: 'Nada', pname: 'scale', price: 40 },
+  { cname: 'sona', pname: 'pen', price: 90 }
+]
+
+
