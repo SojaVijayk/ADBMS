@@ -1,0 +1,28 @@
+ NoSQL - ADMINISTRATION & SHELL COMMANDS
+ 
+ 1.      Write a MongoDB query to create a user “CUSTOMER1” and grant the read role in the INVOICE database.
+ INVOICE> db.createUser({user:"CUSTOMER1",pwd:"1234",roles:[{role:"read",db:"INVOICE"}]});
+{ ok: 1 }
+
+ 
+ 2.      Write a MongoDB query to create the backup for the INVOICE database.
+ ksb@ksb-H410M-H-V2:~$ mongodump --db=INVOICE --out=~/invoice_backup
+2025-04-22T15:38:56.164+0530	writing INVOICE.PRODUCT to ~/invoice_backup/INVOICE/PRODUCT.bson
+2025-04-22T15:38:56.165+0530	done dumping INVOICE.PRODUCT (4 documents)
+2025-04-22T15:38:56.166+0530	writing INVOICE.CUSTOMER to ~/invoice_backup/INVOICE/CUSTOMER.bson
+2025-04-22T15:38:56.167+0530	done dumping INVOICE.CUSTOMER (11 documents)
+
+
+3.      Write a MongoDB query to restore a particular database or a collection.
+ksb@ksb-H410M-H-V2:~$ mongorestore --db INVOICE /home/ksb/~/home/ksb/~/invoice_backup/
+2025-04-22T15:46:16.939+0530	The --db and --collection flags are deprecated for this use-case; please use --nsInclude instead, i.e. with --nsInclude=${DATABASE}.${COLLECTION}
+2025-04-22T15:46:16.940+0530	Failed: mongorestore target '/home/ksb/~/home/ksb/~/invoice_backup/' invalid: stat /home/ksb/~/home/ksb/~/invoice_backup/: no such file or directory
+2025-04-22T15:46:16.940+0530	0 document(s) restored successfully. 0 document(s) failed to restore.
+
+
+
+
+4.      Write a MongoDB query to create an index for the collection customer using the field customer_name.
+INVOICE> db.CUSTOMER.createIndex({ cname: 1 })
+cname_1
+
