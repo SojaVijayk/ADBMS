@@ -26,3 +26,5 @@ ksb@ksb-H410M-H-V2:~$ mongorestore --db INVOICE /home/ksb/~/home/ksb/~/invoice_b
 INVOICE> db.CUSTOMER.createIndex({ cname: 1 })
 cname_1
 
+//RESUBMIT
+DISPLAY INDEX
